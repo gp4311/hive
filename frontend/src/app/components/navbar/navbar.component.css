@@ -1,8 +1,9 @@
 .navbar {
-    background-color: var(--gray-light);
+    background-color: var(--background-color);
     color: var(--gray-dark);
     padding: 10px;
     margin: 0;
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .logo {

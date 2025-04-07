@@ -12,7 +12,7 @@
     --gray-medium: #DFDFD9;
     --gray-dark: #A9A9A9;
     --error: #DC4033;
-    --font-text: 'DM Sans', sans-serif;
+    --font-text: 'IBM Plex Sans', sans-serif;
     --font-heading: 'Calistoga', serif;
   }
   
@@ -36,5 +36,13 @@
   
   button {
     cursor: pointer;
+  }
+
+  button:hover {
+    transition: 0.5s;
+  }
+
+  h1, h2, h3 {
+    font-weight: bold;
   }
   
