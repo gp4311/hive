@@ -1,0 +1,35 @@
+.navbar {
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    padding: 10px;
+    margin: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: xx-large;
+    color: var(--primary-dark);
+    cursor: pointer;
+}
+
+.logo img {
+    padding-right: 10px;
+    height: 45px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.menu li a:hover {
+    color: var(--primary-dark);
+    transition: 0.5s;
+    cursor: pointer;
+}

@@ -1,3 +1,5 @@
+@import 'primeicons/primeicons.css';
+
 :root {
     --primary-color: #FCB44D;
     --primary-color-lightest: #FCC16D;
@@ -8,9 +10,10 @@
     --background-color: #FFFFFF;
     --gray-light: #F9F8F4;
     --gray-medium: #DFDFD9;
+    --gray-dark: #A9A9A9;
     --error: #DC4033;
     --font-text: 'DM Sans', sans-serif;
-    --font-heading: 'DM Serif Display', serif;
+    --font-heading: 'Calistoga', serif;
   }
   
   * {
