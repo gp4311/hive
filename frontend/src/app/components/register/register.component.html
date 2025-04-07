@@ -1,24 +1,58 @@
-<div class="login-container">
-    <h2>Register for Hive</h2>
-    <form (submit)="onSubmit(); $event.preventDefault()">
-        <div>
-            <label>Name:</label>
-            <input type="text" [(ngModel)]="name" name="name" required />
-        </div>
+<div class="register-container">
+    <div class="register-box">
+        <h2 class="register-title">Register</h2>
 
-        <div>
-            <label>Email:</label>
-            <input type="email" [(ngModel)]="email" name="email" required />
-        </div>
+        <form (submit)="onSubmit(); $event.preventDefault()">
+            <div class="form-group">
+                <input
+                    type="text"
+                    id="name"
+                    [(ngModel)]="name"
+                    name="name"
+                    placeholder="Your name"
+                    required
+                />
+            </div>
+    
+            <div class="form-group">
+                <input
+                    type="email"
+                    id="email"
+                    [(ngModel)]="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                />
+            </div>
+    
+            <div class="form-group">
+                <input
+                    type="password"
+                    id="password"
+                    [(ngModel)]="password"
+                    name="password"
+                    placeholder="Password"
+                    required 
+                />
+            </div>
 
-        <div>
-            <label>Password:</label>
-            <input type="password" [(ngModel)]="password" name="password" required />
-        </div>
+            <div class="form-group">
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    [(ngModel)]="confirmPassword"
+                    name="confirmPassword"
+                    placeholder="Confirm password"
+                    required 
+                />
+            </div>
 
-        <button type="submit">Register</button>
-
-        <div class="error" *ngIf="error">{{ error }}</div>
-    </form>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>        
+    
+            <div class="error" *ngIf="error">{{ error }}</div>
+        </form>
+    </div>
 </div>
   

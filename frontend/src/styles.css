@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary-color: #FCB44D;
+    --primary-color-lightest: #FCC16D;
+    --primary-color-light: #FFD496;
+    --primary-color-dark: #FB9927;
+    --primary-color-darkest: #F98824;
+    --primary-dark: #1A1A19;
+    --background-color: #FFFFFF;
+    --gray-light: #F9F8F4;
+    --gray-medium: #DFDFD9;
+    --error: #DC4033;
+    --font-text: 'DM Sans', sans-serif;
+    --font-heading: 'DM Serif Display', serif;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    font-family: var(--font-text);
+    background-color: var(--background-color);
+    color: var(--primary-dark);
+    padding: 5px;
+  }
+  
+  input, button, textarea {
+    font-family: inherit;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  

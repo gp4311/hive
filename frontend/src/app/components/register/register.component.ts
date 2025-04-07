@@ -15,11 +15,21 @@ export class RegisterComponent {
   name = '';
   email = '';
   password = '';
+  confirmPassword = '';
   error = '';
   
   constructor(private auth: AuthService, private router: Router) {}
 
   onSubmit() {
+    // Clear any existing error
+    this.error = '';
+
+    // Password match check
+    if (this.password !== this.confirmPassword) {
+      this.error = 'Passwords do not match.';
+      return;
+    }
+
     this.auth.register(this.name, this.email, this.password).subscribe({
       next: () => this.router.navigate(['/login']),
       error: err => this.error = err.error?.error || 'Registration failed'

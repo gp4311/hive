@@ -19,10 +19,16 @@ export class LoginComponent {
   constructor(private auth: AuthService, private router: Router) {}
 
   onSubmit() {
+    // Clear any existing error
+    this.error = '';
+
     this.auth.login(this.email, this.password).subscribe({
       next: () => this.router.navigate(['/dashboard']),
       error: err => this.error = err.error?.error || 'Login failed'
     })
   }
 
+  onClick() {
+    this.router.navigate(['/register']);
+  }
 }
