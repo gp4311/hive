@@ -1,0 +1,34 @@
+<div class="projects-container">
+    <div class="projects-title-box">
+        <h3 class="projects-title">Projects</h3>
+
+        <button class="add-project" title="Add project">
+            <i class="pi pi-plus" (click)="addProject()"></i>
+        </button>
+    </div>
+
+    <p-table [value]="projects" class="projects-table">
+        <ng-template pTemplate="body" let-project>
+            <tr>
+                <td class="title">{{ project.name }}</td>
+                <td>
+                    <span class="status" [ngClass]="project.status">
+                        <span class="dot"></span>
+                        {{ project.status }}
+                    </span>
+                </td>
+                <td class="description">{{ project.description }}</td>
+                <td class="actions">
+                    <div>
+                        <div (click)="editProject(project.id)" class="p-button">
+                            <i class="pi pi-pencil"></i>
+                        </div>
+                        <div (click)="deleteProject(project.id)" class="p-button">
+                            <i class="pi pi-trash"></i>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

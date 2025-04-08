@@ -1,0 +1,30 @@
+<div class="project-container">
+    <app-menu [projectId]="projectId" [isEditMode]="isEditMode"></app-menu>
+    <div class="project-form-container">
+        <form (submit)="saveProject(); $event.preventDefault()">
+            <label>Name</label>
+            <input [(ngModel)]="project.name" name="name" required />
+
+            <label>Description</label>
+            <textarea [(ngModel)]="project.description" name="description"></textarea>
+
+            <label>Status</label>
+            <select [(ngModel)]="project.status" name="status">
+                <option value="active">Active</option>
+                <option value="archived">Archived</option>
+            </select>
+
+            <label>Start Date</label>
+            <input type="date" [(ngModel)]="project.start_date" name="start_date" />
+
+            <label>End Date</label>
+            <input type="date" [(ngModel)]="project.end_date" name="end_date" />
+    
+            <div class="button-container">
+                <button type="submit">Save</button>
+                <button (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+

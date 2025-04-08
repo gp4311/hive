@@ -2,8 +2,8 @@
 
 :root {
     --primary-color: #FCB44D;
-    --primary-color-lightest: #FCC16D;
-    --primary-color-light: #FFD496;
+    --primary-color-lightest: #FFD496;
+    --primary-color-light: #FCC16D;
     --primary-color-dark: #FB9927;
     --primary-color-darkest: #F98824;
     --primary-dark: #1A1A19;
@@ -12,6 +12,10 @@
     --gray-medium: #DFDFD9;
     --gray-dark: #A9A9A9;
     --error: #DC4033;
+    --status-active-bg: #e6f4ea;
+    --status-active-color: #1e8e3e;
+    --status-archived-bg: #fff7e0;
+    --status-archived-color: #e6b800;
     --font-text: 'IBM Plex Sans', sans-serif;
     --font-heading: 'Calistoga', serif;
   }

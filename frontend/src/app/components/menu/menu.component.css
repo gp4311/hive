@@ -1,0 +1,43 @@
+.menu {
+    background-color: var(--background-color);
+    box-shadow: 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    width: fit-content;
+    padding: 20px;
+    height: 100%;
+}
+
+.project-title {
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.project-sections {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.project-sections li i {
+    padding-right: 10px;
+}
+
+.project-sections li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--gray-dark);
+}
+
+.project-sections li a:hover {
+    color: var(--primary-dark);
+    transition: 0.5s;
+}
+
+@media (max-width: 480px){
+    .project-title, .section-title {
+        display: none;
+    }
+}

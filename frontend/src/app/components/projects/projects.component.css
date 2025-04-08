@@ -1,0 +1,111 @@
+.projects-container {
+    margin: 25px 10px;
+}
+
+.projects-title-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.projects-title {
+    color: var(--primary-dark);
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+}
+
+.add-project {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-project:hover {
+    background-color: var(--primary-color-light);
+}
+
+:host ::ng-deep .p-datatable-tbody > tr {
+    background-color: var(--background-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr:hover {
+    background-color: var(--primary-color-lightest);
+    transition-duration: 0.5s;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr > td {
+    border: none;
+    padding: 10px;
+}
+
+.title {
+    font-weight: 600;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    font-size: small;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.status.active {
+    background-color: var(--status-active-bg);
+    color: var(--status-active-color);
+}
+
+.status.archived {
+    background-color: var(--status-archived-bg);
+    color: var(--status-archived-color);
+}
+
+.description {
+    font-size: small;
+}
+
+.actions div {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.p-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.p-button:hover {
+    color: var(--primary-color-dark);
+    transition-duration: 0.5s;
+}
+
+@media (max-width: 720px) {
+    .projects-table ::ng-deep td.description {
+        display: none;
+    }
+}

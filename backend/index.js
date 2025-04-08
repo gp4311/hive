@@ -8,7 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 const userRoutes = require('./models/users/routes');
+const projectRoutes = require('./models/projects/routes');
+
 app.use('/api/users', userRoutes);
+app.use('/api/projects', projectRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

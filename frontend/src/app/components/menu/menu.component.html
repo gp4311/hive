@@ -1,0 +1,27 @@
+<nav class="menu">
+    <div class="project-title">
+        {{ projectName }}
+    </div>
+    <div *ngIf="isEditMode">
+        <ul class="project-sections">
+            <li>
+                <a [routerLink]="['/projects', projectId, 'subsystems']">
+                    <i class="pi pi-sitemap"></i>
+                    <div class="section-title">Subsystems</div>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/projects', projectId, 'requirements']">
+                    <i class="pi pi-file-edit"></i>
+                    <div class="section-title">Requirements</div>
+                </a>
+            </li>
+            <li>
+                <a [routerLink]="['/projects', projectId, 'testcases']">
+                    <i class="pi pi-file-check"></i>
+                    <div class="section-title">Test Cases</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
