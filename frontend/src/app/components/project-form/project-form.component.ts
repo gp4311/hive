@@ -44,7 +44,14 @@ export class ProjectFormComponent {
 
   loadProject(id: number) {
     this.projectSvc.getProjectById(id).subscribe({
-      next: (data) => (this.project = data),
+      next: (data) => {
+        // Convert ISO strings to date-only format
+        this.project = {
+          ...data,
+          start_date: data.start_date?.split('T')[0] ?? '',
+          end_date: data.end_date?.split('T')[0] ?? ''
+        };
+      },
       error: (err) => console.error('Failed to load project', err),
     });
   }
