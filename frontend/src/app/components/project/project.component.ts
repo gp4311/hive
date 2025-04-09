@@ -2,18 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService, Project } from '../../services/project.service';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { MenuComponent } from '../menu/menu.component';
 
 @Component({
-  selector: 'app-project-form',
+  selector: 'app-project',
   standalone: true,
-  imports: [CommonModule, FormsModule, MenuComponent],
-  templateUrl: './project-form.component.html',
-  styleUrl: './project-form.component.css'
+  imports: [CommonModule, MenuComponent],
+  templateUrl: './project.component.html',
+  styleUrl: './project.component.css'
 })
-export class ProjectFormComponent {
-  isEditMode = false;
+export class ProjectComponent {
   projectId: any | null = null;
   project: Project = {
     name: '',
@@ -35,7 +33,6 @@ export class ProjectFormComponent {
     const sectionParam = this.route.snapshot.paramMap.get('section');
 
     if (idParam && !isNaN(+idParam)) {
-      this.isEditMode = true;
       this.projectId = +idParam;
       this.section = sectionParam;
       this.loadProject(this.projectId);
@@ -45,7 +42,6 @@ export class ProjectFormComponent {
   loadProject(id: number) {
     this.projectSvc.getProjectById(id).subscribe({
       next: (data) => {
-        // Convert ISO strings to date-only format
         this.project = {
           ...data,
           start_date: data.start_date?.split('T')[0] ?? '',
@@ -56,23 +52,7 @@ export class ProjectFormComponent {
     });
   }
 
-  cancel() {
-    if (this.isEditMode && this.projectId) {
-      this.router.navigate([`/projects/${this.projectId}`]);
-    } else {
-      this.router.navigate(['/projects']);
-    }
-  }
-
-  saveProject() {
-    if (this.isEditMode && this.projectId) {
-      this.projectSvc.updateProject(this.projectId, this.project).subscribe({
-        next: () => this.router.navigate([`/projects/${this.projectId}`]),
-      });
-    } else {
-      this.projectSvc.createProject(this.project).subscribe({
-        next: () => this.router.navigate(['/projects']),
-      });
-    }
+  editProject(id: number) {
+    this.router.navigate([`/projects/${id}/edit`]);
   }
 }

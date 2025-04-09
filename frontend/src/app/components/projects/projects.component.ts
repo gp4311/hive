@@ -46,6 +46,10 @@ export class ProjectsComponent {
     this.router.navigate([`/projects/${id}/edit`]);
   }
 
+  viewProject(id: number) {
+    this.router.navigate([`/projects/${id}`]);
+  }
+
   deleteProject(id: number) {
     const confirmed = confirm('Are you sure you want to delete this project?');
     if (!confirmed) return;

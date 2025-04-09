@@ -10,7 +10,7 @@
     <p-table [value]="projects" class="projects-table">
         <ng-template pTemplate="body" let-project>
             <tr>
-                <td class="title">{{ project.name }}</td>
+                <td class="title" (click)="viewProject(project.id)">{{ project.name }}</td>
                 <td>
                     <span class="status" [ngClass]="project.status">
                         <span class="dot"></span>

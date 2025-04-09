@@ -1,0 +1,23 @@
+<div class="project-container">
+    <app-menu [projectId]="projectId" [isEditMode]="true"></app-menu>
+    <div class="project-information">
+        <div class="name">
+            <div>
+                <h3>{{ project.name }}</h3>
+            </div>
+            <div (click)="editProject(projectId)" class="edit">
+                <i class="pi pi-pencil"></i>
+            </div>
+        </div>
+        <div class="data">
+            <span class="status" [ngClass]="project.status">
+                <span class="dot"></span>
+                {{ project.status }}
+            </span>
+            <div>
+                {{ project.start_date }} &ndash; {{ project.end_date }}
+            </div>
+        </div>
+        <div class="description">{{ project.description }}</div>
+    </div>
+</div>
