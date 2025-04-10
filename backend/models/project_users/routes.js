@@ -4,6 +4,6 @@ const controller = require('./controller');
 
 router.post('/add', controller.addUserToProject);
 router.post('/remove', controller.removeUserFromProject);
-router.post(':projectId', controller.getUsersForProject);
+router.get('/:projectId', controller.getUsersForProject);
 
 module.exports = router;
