@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface Project {
-  id?: number;
-  name: string;
-  description?: string;
-  status: 'active' | 'archived';
-  start_date?: string;
-  end_date?: string;
-}
+import { Project } from '../interfaces/project';
 
 @Injectable({
   providedIn: 'root'

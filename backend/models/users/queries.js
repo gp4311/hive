@@ -8,7 +8,12 @@ const findUserByEmail = `
   SELECT * FROM users WHERE email = $1;
 `;
 
+const getAllUsers = `
+  SELECT id, name, email FROM users ORDER BY name;
+`;
+
 module.exports = {
   createUser,
   findUserByEmail,
+  getAllUsers,
 };

@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ProjectService, Project } from '../../services/project.service';
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../interfaces/project';
 
 @Component({
   selector: 'app-menu',

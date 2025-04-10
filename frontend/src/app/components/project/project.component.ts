@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProjectService, Project } from '../../services/project.service';
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../interfaces/project';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
 

@@ -40,8 +40,19 @@ const logoutUser = (req, res) => {
   res.json({ message: 'Logout successful (client should remove token)' });
 };
 
+const getAllUsers = async (req, res) => {
+  try {
+    const result = await pool.query(queries.getAllUsers);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error fetching users' });
+  }
+};
+
 module.exports = {
   registerUser,
   loginUser,
   logoutUser,
+  getAllUsers
 };
