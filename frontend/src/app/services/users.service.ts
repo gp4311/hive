@@ -20,4 +20,8 @@ export class ProjectUserService {
   removeUserFromProject(user_id: number, project_id: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/remove`, { user_id, project_id });
   }
+
+  updateUserRole(project_id: number, user_id: number, role: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/update-role`, { project_id, user_id, role });
+  }
 }

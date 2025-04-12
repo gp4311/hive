@@ -1,0 +1,69 @@
+.project-users {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.title {
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title h3 {
+    margin: 0;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr {
+    background-color: var(--background-color);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr:hover {
+    background-color: var(--primary-color-lightest);
+    transition-duration: 0.5s;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr:not(:last-child) {
+    margin-bottom: 12px;
+}
+
+:host ::ng-deep .p-datatable-tbody > tr > td {
+    border: none;
+    padding: 10px;
+}
+
+select {
+    padding: 5px 10px;
+    border: 1px solid var(--gray-medium);
+    border-radius: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="16" ...');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 2rem;
+}
+
+.add-user-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.p-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.p-button:hover {
+    color: var(--primary-color-dark);
+    transition-duration: 0.5s;
+}

@@ -34,8 +34,25 @@ const getUsersForProject = async (req, res) => {
   }
 };
 
+const updateUserRole = async (req, res) => {
+  const { user_id, project_id, role } = req.body;
+
+  if (!user_id || !project_id || !role) {
+    return res.status(400).json({ error: 'Missing user_id, project_id or role' });
+  }
+
+  try {
+    await pool.query(queries.updateUserRole, [user_id, project_id, role]);
+    res.status(200).json({ message: 'User role updated successfully' });
+  } catch (err) {
+    console.error('Error updating user role:', err);
+    res.status(500).json({ error: 'Failed to update user role' });
+  }
+};
+
 module.exports = {
   addUserToProject,
   removeUserFromProject,
   getUsersForProject,
+  updateUserRole
 };

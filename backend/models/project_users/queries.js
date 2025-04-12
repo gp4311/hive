@@ -15,8 +15,15 @@ const getUsersForProject = `
   WHERE pu.project_id = $1;
 `;
 
+const updateUserRole = `
+  UPDATE project_users
+  SET role = $3
+  WHERE user_id = $1 AND project_id = $2
+`;
+
 module.exports = {
     addUserToProject,
     removeUserFromProject,
     getUsersForProject,
+    updateUserRole
 };

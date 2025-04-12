@@ -4,12 +4,11 @@ import { ProjectService } from '../../services/project.service';
 import { ProjectContextService } from '../../services/project-context.service';
 import { Project } from '../../interfaces/project';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule, MenuComponent],
+  imports: [CommonModule],
   templateUrl: './project.component.html',
   styleUrl: './project.component.css'
 })
