@@ -1,6 +1,11 @@
 <nav class="menu">
-    <div class="project-title">
+    <div class="project-title" *ngIf="!isEditMode">
         {{ projectName }}
+    </div>
+    <div class="project-title" *ngIf="isEditMode">
+        <a [routerLink]="['/projects', projectId]">
+            {{ projectName }}
+        </a>
     </div>
     <div *ngIf="isEditMode">
         <ul class="project-sections">
