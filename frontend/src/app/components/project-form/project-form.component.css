@@ -1,6 +1,5 @@
 .project-container {
     display: flex;
-    flex-direction: row;
     height: 100%;
 }
 
@@ -15,6 +14,7 @@ form {
     gap: 16px 24px;
     align-items: center;
     max-width: 600px;
+    width: 100%;
 }
 
 label {
@@ -61,4 +61,21 @@ button {
 
 button:hover {
     background-color: var(--primary-color-light);
+}
+
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    label {
+        text-align: left;
+        padding-bottom: 4px;
+    }
+
+    .button-container {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
