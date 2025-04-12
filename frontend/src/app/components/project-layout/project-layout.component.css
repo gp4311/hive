@@ -1,0 +1,10 @@
+.project-container {
+    display: flex;
+    height: 100%;
+}
+
+.project-section-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}

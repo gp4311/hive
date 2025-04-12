@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
+import { ProjectContextService } from '../../services/project-context.service';
 import { Project } from '../../interfaces/project';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
@@ -26,17 +27,15 @@ export class ProjectComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private projectSvc: ProjectService
+    private projectSvc: ProjectService,
+    private projectCtx: ProjectContextService
   ) {}
 
   ngOnInit(): void {
-    const idParam = this.route.snapshot.paramMap.get('id');
-    const sectionParam = this.route.snapshot.paramMap.get('section');
-
-    if (idParam && !isNaN(+idParam)) {
-      this.projectId = +idParam;
-      this.section = sectionParam;
-      this.loadProject(this.projectId);
+    const id = this.projectCtx.getProjectId();
+    if (id) {
+      this.projectId = id;
+      this.loadProject(id);
     }
   }
 
