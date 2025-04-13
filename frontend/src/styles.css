@@ -50,3 +50,15 @@
     font-weight: bold;
   }
   
+  .p-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .p-button:hover {
+    color: var(--primary-color-dark);
+    transition-duration: 0.5s;
+  }

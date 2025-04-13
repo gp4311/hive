@@ -24,6 +24,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/project/project.component').then(m => m.ProjectComponent)
             },
             {
+                path: 'subsystems',
+                loadComponent: () => import('./components/subsystems/subsystems.component').then(m => m.SubsystemsComponent)
+            },
+            {
                 path: 'users',
                 loadComponent: () => import('./components/users/users.component').then(m => m.UsersComponent)
             }

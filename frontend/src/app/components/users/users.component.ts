@@ -65,11 +65,15 @@ export class UsersComponent {
   }
 
   addUser() {
-    this.userSvc.addUserToProject(this.selectedUserId, this.projectId!, this.selectedUserRole).subscribe({
-      next: () => {
-        this.loadProjectUsers(this.projectId!);
-      }
-    });
+    if(this.selectedUserId && this.selectedUserRole) {
+      this.userSvc.addUserToProject(this.selectedUserId, this.projectId!, this.selectedUserRole).subscribe({
+        next: () => {
+          this.loadProjectUsers(this.projectId!);
+          this.selectedUserId = null;
+          this.selectedUserRole = null;
+        }
+      });
+    }
   }
   
   removeUser(userId: number) {
