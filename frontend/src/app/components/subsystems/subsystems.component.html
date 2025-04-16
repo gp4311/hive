@@ -8,7 +8,9 @@
                     <ng-container *ngIf="editingSubsystemId === subsystem.id; else nameView">
                         <input [(ngModel)]="editedSubsystem!.name" />
                     </ng-container>
-                    <ng-template #nameView>{{ subsystem.name }}</ng-template>
+                    <ng-template #nameView>
+                        <span class="subsystem-name">{{ subsystem.name }}</span>
+                    </ng-template>
                 </td>
                 <td>
                     <ng-container *ngIf="editingSubsystemId === subsystem.id; else descView">

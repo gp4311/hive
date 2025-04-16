@@ -1,0 +1,115 @@
+.project-testcases {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.title {
+    color: var(--primary-dark);
+    margin: 0;
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input {
+    padding: 5px 10px;
+    border: 1px solid var(--gray-medium);
+    border-radius: 10px;
+    font-size: small;
+}
+
+.add-test-case {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    width: fit-content;
+    padding: 5px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-test-case:hover {
+    background-color: var(--primary-color-light);
+}
+
+.test-case-id {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    font-size: small;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+}
+
+.status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.status.planned {
+    background-color: var(--status-planned-bg);
+    color: var(--status-planned-color);
+}
+
+.status.in_progress {
+    background-color: var(--status-in-progress-bg);
+    color: var(--status-in-progress-color);
+}
+
+.status.passed {
+    background-color: var(--status-passed-bg);
+    color: var(--status-passed-color);
+}
+
+.status.failed {
+    background-color: var(--status-failed-bg);
+    color: var(--status-failed-color);
+}
+
+.actions {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.testcases-table ::ng-deep th {
+    background-color: var(--primary-color-lightest);
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border: none;
+}
+
+.testcases-table ::ng-deep th div {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+
+.testcases-table ::ng-deep th:hover {
+    background-color: var(--primary-color-light);
+}
+
+.testcases-table ::ng-deep td {
+    padding: 10px;
+    border: none;
+}
+
+.testcases-table ::ng-deep tr:hover {
+    background-color: var(--gray-light);
+}

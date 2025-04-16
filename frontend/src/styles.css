@@ -16,6 +16,14 @@
     --status-active-color: #1e8e3e;
     --status-archived-bg: #fff7e0;
     --status-archived-color: #e6b800;
+    --status-planned-bg: #e0f0ff;
+    --status-planned-color: #0077cc;
+    --status-in-progress-bg: #fff7e0;
+    --status-in-progress-color: #e6b800;
+    --status-passed-bg: #e6f4ea;
+    --status-passed-color: #1e8e3e;
+    --status-failed-bg: #fbeaea;
+    --status-failed-color: #d93025;
     --font-text: 'IBM Plex Sans', sans-serif;
     --font-heading: 'Calistoga', serif;
   }
