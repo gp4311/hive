@@ -1,1 +1,60 @@
-<p>test-case-form works!</p>
+<div class="testcase-form-container">
+    <form (submit)="onSubmit(); $event.preventDefault()">
+        <label>Test Case ID</label>
+        <input [(ngModel)]="testcase.test_case_id" name="name" required />
+
+        <label>Description</label>
+        <input [(ngModel)]="testcase.description" name="description" required />
+
+        <label>Test Steps</label>
+        <quill-editor [(ngModel)]="testcase.test_steps"
+                    [modules]="editorModules"
+                    name="test_steps"
+                    placeholder="">
+        </quill-editor>
+
+        <label>Prerequisites</label>
+        <quill-editor [(ngModel)]="testcase.prerequisites"
+                    [modules]="editorModules"
+                    name="prerequisites"
+                    placeholder="">
+        </quill-editor>
+
+        <label>Test Data</label>
+        <quill-editor [(ngModel)]="testcase.test_data"
+                    [modules]="editorModules"
+                    name="test_data"
+                    placeholder="">
+        </quill-editor>
+
+        <label>Expected Results</label>
+        <quill-editor [(ngModel)]="testcase.expected_result"
+                    [modules]="editorModules"
+                    name="expected_result"
+                    placeholder="">
+        </quill-editor>
+
+        <label>Actual Results</label>
+        <quill-editor [(ngModel)]="testcase.actual_result"
+                    [modules]="editorModules"
+                    name="actual_result"
+                    placeholder="">
+        </quill-editor>
+
+        <label>Status</label>
+        <select [(ngModel)]="testcase.status" name="status">
+            <option value="planned">Planned</option>
+            <option value="in_progress">In Progress</option>
+            <option value="passed">Passed</option>
+            <option value="failed">Failed</option>
+        </select>
+
+        <label>Evidence</label>
+        <div></div>
+
+        <div class="button-container">
+            <button type="submit">Save</button>
+            <button (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>

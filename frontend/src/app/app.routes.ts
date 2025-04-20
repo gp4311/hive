@@ -32,15 +32,15 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/test-cases/test-cases.component').then(m => m.TestCasesComponent)
             },
             {
-                path: 'testcases/:id',
-                loadComponent: () => import('./components/test-case/test-case.component').then(m => m.TestCaseComponent)
-            },
-            {
-                path: 'testcases/:id/edit',
+                path: 'testcases/new',
                 loadComponent: () => import('./components/test-case-form/test-case-form.component').then(m => m.TestCaseFormComponent)
             },
             {
-                path: 'testcases/new',
+                path: 'testcases/:testcaseId',
+                loadComponent: () => import('./components/test-case/test-case.component').then(m => m.TestCaseComponent)
+            },
+            {
+                path: 'testcases/:testcaseId/edit',
                 loadComponent: () => import('./components/test-case-form/test-case-form.component').then(m => m.TestCaseFormComponent)
             },
             {

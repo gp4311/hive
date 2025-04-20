@@ -12,7 +12,11 @@ export class TestCasesService {
     constructor(private http: HttpClient) { }
 
     getTestCasesByProject(projectId: number): Observable<TestCase[]> {
-        return this.http.get<TestCase[]>(`${this.apiUrl}/${projectId}`);
+        return this.http.get<TestCase[]>(`${this.apiUrl}/project/${projectId}`);
+    }
+
+    getTestCaseById(id: number): Observable<TestCase> {
+        return this.http.get<TestCase>(`${this.apiUrl}/${id}`);
     }
 
     addTestCase(testCase: TestCase): Observable<TestCase> {

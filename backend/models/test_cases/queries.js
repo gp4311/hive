@@ -1,3 +1,8 @@
+const getTestCaseById = `
+  SELECT * FROM test_cases
+  WHERE id = $1
+`;
+
 const getTestCasesByProject = `
     SELECT * FROM test_cases
     WHERE project_id = $1
@@ -15,15 +20,16 @@ const addTestCase = `
 
 const updateTestCase = `
   UPDATE test_cases
-  SET test_case_id = $2,
-      description = $3,
-      test_steps = $4,
-      prerequisites = $5,
-      test_data = $6,
-      expected_result = $7,
-      actual_result = $8,
-      status = $9,
-      evidence_link = $10
+  SET project_id = $2,
+      test_case_id = $3,
+      description = $4,
+      test_steps = $5,
+      prerequisites = $6,
+      test_data = $7,
+      expected_result = $8,
+      actual_result = $9,
+      status = $10,
+      evidence_link = $11
   WHERE id = $1
   RETURNING *;
 `;
@@ -34,8 +40,9 @@ const deleteTestCase = `
 `;
 
 module.exports = {
-    getTestCasesByProject,
-    addTestCase,
-    updateTestCase,
-    deleteTestCase
+  getTestCaseById,
+  getTestCasesByProject,
+  addTestCase,
+  updateTestCase,
+  deleteTestCase
 };

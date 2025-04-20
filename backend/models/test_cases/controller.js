@@ -1,6 +1,18 @@
 const pool = require('../../db/pool');
 const queries = require('./queries');
 
+const getTestCaseById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await pool.query(queries.getTestCaseById, [id]);
+        if (result.rows.length === 0) return res.status(404).json({ error: 'Test case not found' });
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error fetching test case' });
+    }
+};
+
 const getTestCasesByProject = async (req, res) => {
     const { projectId } = req.params;
 
@@ -50,6 +62,7 @@ const deleteTestCase = async (req, res) => {
 };
 
 module.exports = {
+    getTestCaseById,
     getTestCasesByProject,
     addTestCase,
     updateTestCase,
