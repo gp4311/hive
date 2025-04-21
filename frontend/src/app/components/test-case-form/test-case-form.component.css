@@ -34,6 +34,23 @@ select {
     padding-right: 2rem;
 }
 
+.evidence {
+    font-size: small;
+}
+
+input[type="file"] {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.evidence div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .button-container {
     grid-column: 2 / span 1;
     display: flex;

@@ -50,7 +50,15 @@
         </select>
 
         <label>Evidence</label>
-        <div></div>
+        <div class="evidence">
+            <input type="file" (change)="onFileSelected($event)" />
+            <div *ngIf="testcase.evidence_link && !pendingFileRemoval">
+                <a [href]="'http://localhost:5000' + testcase.evidence_link" target="_blank">View Uploaded File</a>
+                <div (click)="removeEvidence()" class="p-button">
+                    <i class="pi pi-trash"></i>
+                </div>
+            </div>
+        </div>
 
         <div class="button-container">
             <button type="submit">Save</button>
