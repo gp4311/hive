@@ -33,7 +33,6 @@
                         <p-sortIcon field="status"></p-sortIcon>
                     </div>
                 </th>
-                <th></th>
             </tr>
         </ng-template>
 
@@ -48,13 +47,6 @@
                         <span class="dot"></span>
                         {{ formatStatus(testcase.status) }}
                     </span>
-                </td>
-                <td>
-                    <div class="actions">
-                        <div (click)="deleteTestCase(testcase.id)" class="p-button">
-                            <i class="pi pi-trash"></i>
-                        </div>
-                    </div>
                 </td>
             </tr>
         </ng-template>

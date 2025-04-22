@@ -128,6 +128,15 @@ export class TestCaseFormComponent implements OnInit {
     }
   }
 
+  deleteTestCase(): void {
+    this.testcasesSvc.deleteTestCase(this.testcaseId).subscribe({
+      next: () => {
+        this.router.navigate([`/projects/${this.projectId}/testcases`]);
+      },
+      error: (err) => console.error('Failed to delete test case', err)
+    });
+  }
+
   onCancel(): void {
     this.router.navigate([`/projects/${this.projectId}/testcases`]);
   }

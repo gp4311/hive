@@ -48,15 +48,6 @@ export class TestCasesComponent {
     this.router.navigate([`/projects/${this.projectId}/testcases/${id}`]);
   }
 
-  deleteTestCase(id: number): void {
-    this.testcasesSvc.deleteTestCase(id).subscribe({
-      next: () => {
-        this.testcases = this.testcases.filter(testcase => testcase.id !== id);
-      },
-      error: (err) => console.error('Failed to delete test case', err)
-    });
-  }
-
   formatStatus(status: string): string {
     return status.replace(/_/g, ' ');
   }  
