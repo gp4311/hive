@@ -16,9 +16,11 @@ export class FileService {
     return this.http.post(`${this.apiUrl}/upload`, formData);
   }
 
-  getFile(link: string): Observable<any> {
+  getFile(link: string): Observable<Blob> {
     const fileName = link.split('/uploads/')[1];
-    return this.http.get(`${this.apiUrl}/${fileName}`);
+    return this.http.get(`http://localhost:5000/uploads/${fileName}`, {
+      responseType: 'blob'
+    });
   }
 
   deleteFile(link: string): Observable<any> {

@@ -48,10 +48,6 @@ export class TestCasesComponent {
     this.router.navigate([`/projects/${this.projectId}/testcases/${id}`]);
   }
 
-  updateTestCase(id: number) {
-    this.router.navigate([`/projects/${this.projectId}/testcases/${id}/edit`]);
-  }
-
   deleteTestCase(id: number): void {
     this.testcasesSvc.deleteTestCase(id).subscribe({
       next: () => {

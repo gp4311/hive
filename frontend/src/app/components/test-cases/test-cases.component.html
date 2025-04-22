@@ -39,7 +39,7 @@
 
         <ng-template pTemplate="body" let-testcase>
             <tr>
-                <td class="test-case-id" (click)="viewTestCase(testcase.test_case_id)">
+                <td class="test-case-id" (click)="viewTestCase(testcase.id)">
                     {{ testcase.test_case_id }}
                 </td>
                 <td>{{ testcase.description }}</td>
@@ -51,9 +51,6 @@
                 </td>
                 <td>
                     <div class="actions">
-                        <div (click)="updateTestCase(testcase.id)" class="p-button">
-                            <i class="pi pi-pencil"></i>
-                        </div>
                         <div (click)="deleteTestCase(testcase.id)" class="p-button">
                             <i class="pi pi-trash"></i>
                         </div>

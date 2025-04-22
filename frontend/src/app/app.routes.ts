@@ -37,10 +37,6 @@ export const routes: Routes = [
             },
             {
                 path: 'testcases/:testcaseId',
-                loadComponent: () => import('./components/test-case/test-case.component').then(m => m.TestCaseComponent)
-            },
-            {
-                path: 'testcases/:testcaseId/edit',
                 loadComponent: () => import('./components/test-case-form/test-case-form.component').then(m => m.TestCaseFormComponent)
             },
             {

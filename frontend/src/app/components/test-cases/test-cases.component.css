@@ -44,42 +44,6 @@ input {
     cursor: pointer;
 }
 
-.status {
-    display: inline-flex;
-    align-items: center;
-    font-size: small;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 999px;
-}
-
-.status .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: currentColor;
-}
-
-.status.planned {
-    background-color: var(--status-planned-bg);
-    color: var(--status-planned-color);
-}
-
-.status.in_progress {
-    background-color: var(--status-in-progress-bg);
-    color: var(--status-in-progress-color);
-}
-
-.status.passed {
-    background-color: var(--status-passed-bg);
-    color: var(--status-passed-color);
-}
-
-.status.failed {
-    background-color: var(--status-failed-bg);
-    color: var(--status-failed-color);
-}
-
 .actions {
     display: flex;
     justify-content: end;
