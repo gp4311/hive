@@ -2,94 +2,145 @@
 @import "quill/dist/quill.snow.css";
 
 :root {
-    --primary-color: #FCB44D;
-    --primary-color-lightest: #FFD496;
-    --primary-color-light: #FCC16D;
-    --primary-color-dark: #FB9927;
-    --primary-color-darkest: #F98824;
-    --primary-dark: #1A1A19;
-    --background-color: #FFFFFF;
-    --gray-light: #F9F8F4;
-    --gray-medium: #DFDFD9;
-    --gray-dark: #A9A9A9;
-    --error: #DC4033;
-    --status-active-bg: #e6f4ea;
-    --status-active-color: #1e8e3e;
-    --status-archived-bg: #fff7e0;
-    --status-archived-color: #e6b800;
-    --status-planned-bg: #e0f0ff;
-    --status-planned-color: #0077cc;
-    --status-in-progress-bg: #fff7e0;
-    --status-in-progress-color: #e6b800;
-    --status-passed-bg: #e6f4ea;
-    --status-passed-color: #1e8e3e;
-    --status-failed-bg: #fbeaea;
-    --status-failed-color: #d93025;
-    --font-text: 'IBM Plex Sans', sans-serif;
-    --font-heading: 'Calistoga', serif;
-  }
-  
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  html, body {
-    height: 100%;
-    font-family: var(--font-text);
-    background-color: var(--background-color);
-    color: var(--primary-dark);
-    padding: 5px;
-  }
-  
-  input, button, textarea {
-    font-family: inherit;
-  }
-  
-  button {
-    cursor: pointer;
-  }
+  --primary-color: #FCB44D;
+  --primary-color-lightest: #FFD496;
+  --primary-color-light: #FCC16D;
+  --primary-color-dark: #FB9927;
+  --primary-color-darkest: #F98824;
+  --primary-dark: #1A1A19;
+  --background-color: #FFFFFF;
+  --gray-light: #F9F8F4;
+  --gray-medium: #DFDFD9;
+  --gray-dark: #A9A9A9;
+  --error: #DC4033;
+  --status-active-bg: #e6f4ea;
+  --status-active-color: #1e8e3e;
+  --status-archived-bg: #fff7e0;
+  --status-archived-color: #e6b800;
+  --status-planned-bg: #e0f0ff;
+  --status-planned-color: #0077cc;
+  --status-in-progress-bg: #fff7e0;
+  --status-in-progress-color: #e6b800;
+  --status-passed-bg: #e6f4ea;
+  --status-passed-color: #1e8e3e;
+  --status-failed-bg: #fbeaea;
+  --status-failed-color: #d93025;
+  --font-text: 'IBM Plex Sans', sans-serif;
+  --font-heading: 'Calistoga', serif;
+}
 
-  button:hover {
-    transition: 0.5s;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  h1, h2, h3 {
-    font-weight: bold;
-  }
-  
-  .p-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    cursor: pointer;
-  }
+html,
+body {
+  height: 100%;
+  font-family: var(--font-text);
+  background-color: var(--background-color);
+  color: var(--primary-dark);
+  padding: 5px;
+}
 
-  .p-button:hover {
-    color: var(--primary-color-dark);
-    transition-duration: 0.5s;
-  }
+input,
+button,
+textarea {
+  font-family: inherit;
+}
 
-  quill-editor {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .ql-toolbar.ql-snow {
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .ql-container.ql-snow {
-    border-radius: 0 0 10px 10px;
-    min-height: 100px;
-    font-size: 14px;
-    font-family: var(--font-text);
-  }
-  
-  .ql-editor {
-    padding: 10px;
-    line-height: 1.6;
-  }
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  transition: 0.5s;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+.p-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+}
+
+.p-button:hover {
+  color: var(--primary-color-dark);
+  transition-duration: 0.5s;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  font-size: small;
+  gap: 6px;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+
+.status .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.status.active {
+  background-color: var(--status-active-bg);
+  color: var(--status-active-color);
+}
+
+.status.archived {
+  background-color: var(--status-archived-bg);
+  color: var(--status-archived-color);
+}
+
+.status.planned {
+  background-color: var(--status-planned-bg);
+  color: var(--status-planned-color);
+}
+
+.status.in_progress {
+  background-color: var(--status-in-progress-bg);
+  color: var(--status-in-progress-color);
+}
+
+.status.passed {
+  background-color: var(--status-passed-bg);
+  color: var(--status-passed-color);
+}
+
+.status.failed {
+  background-color: var(--status-failed-bg);
+  color: var(--status-failed-color);
+}
+
+quill-editor {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ql-toolbar.ql-snow {
+  border-radius: 10px 10px 0 0;
+}
+
+.ql-container.ql-snow {
+  border-radius: 0 0 10px 10px;
+  min-height: 100px;
+  font-size: 14px;
+  font-family: var(--font-text);
+}
+
+.ql-editor {
+  padding: 10px;
+  line-height: 1.6;
+}

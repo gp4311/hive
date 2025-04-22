@@ -57,32 +57,6 @@
     cursor: pointer;
 }
 
-.status {
-    display: inline-flex;
-    align-items: center;
-    font-size: small;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 999px;
-}
-
-.status .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: currentColor;
-}
-
-.status.active {
-    background-color: var(--status-active-bg);
-    color: var(--status-active-color);
-}
-
-.status.archived {
-    background-color: var(--status-archived-bg);
-    color: var(--status-archived-color);
-}
-
 .description {
     font-size: small;
 }
