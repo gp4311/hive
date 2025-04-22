@@ -51,7 +51,11 @@
 
         <label>Evidence</label>
         <div class="evidence">
-            <input type="file" (change)="onFileSelected($event)" />
+            <input
+                type="file"
+                (change)="onFileSelected($event)"
+                [disabled]="testcase.evidence_link && !pendingFileRemoval"
+            />
             <div *ngIf="testcase.evidence_link && !pendingFileRemoval">
                 <a [href]="'http://localhost:5000' + testcase.evidence_link" target="_blank">View Uploaded File</a>
                 <div (click)="removeEvidence()" class="p-button">
