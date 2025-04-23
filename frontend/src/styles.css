@@ -50,12 +50,38 @@ textarea {
   font-family: inherit;
 }
 
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 5px 10px;
+  border: 1px solid var(--gray-medium);
+  border-radius: 10px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="16" ...');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  padding-right: 2rem;
+}
+
 button {
   cursor: pointer;
+  padding: 5px 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 20px;
 }
 
 button:hover {
   transition: 0.5s;
+  background-color: var(--primary-color-light);
 }
 
 h1,

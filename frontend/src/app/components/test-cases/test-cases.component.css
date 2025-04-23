@@ -16,13 +16,6 @@
     align-items: center;
 }
 
-input {
-    padding: 5px 10px;
-    border: 1px solid var(--gray-medium);
-    border-radius: 10px;
-    font-size: small;
-}
-
 .add-test-case {
     background-color: var(--primary-color);
     color: var(--background-color);
