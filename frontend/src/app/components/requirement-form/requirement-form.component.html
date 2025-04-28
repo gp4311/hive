@@ -1,0 +1,67 @@
+<div class="requirements-form-container">
+    <form (submit)="onSubmit(); $event.preventDefault()">
+        <label>Requirement ID</label>
+        <input [(ngModel)]="requirement.requirement_id" name="name" required />
+
+        <label>Title</label>
+        <input [(ngModel)]="requirement.title" name="title" required />
+
+        <label>Description</label>
+        <quill-editor [(ngModel)]="requirement.description"
+                    [modules]="editorModules"
+                    name="description"
+                    placeholder="">
+        </quill-editor>
+
+        <label>Type</label>
+        <select [(ngModel)]="requirement.type" name="type">
+            <option value="functional">Functional</option>
+            <option value="non-functional">Non-functional</option>
+        </select>
+
+        <label>Priority</label>
+        <select [(ngModel)]="requirement.priority" name="priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+
+        <label>Status</label>
+        <select [(ngModel)]="requirement.status" name="status">
+            <option value="draft">Draft</option>
+            <option value="reviewed">Reviewed</option>
+            <option value="approved">Approved</option>
+            <option value="verified">Verified</option>
+        </select>
+
+        <label>Verification Method</label>
+        <select [(ngModel)]="requirement.verification_method" name="verification_method">
+            <option value="test">Test</option>
+            <option value="inspection">Inspection</option>
+            <option value="analysis">Analysis</option>
+            <option value="demo">Demo</option>
+        </select>
+
+        <label>Source</label>
+        <input [(ngModel)]="requirement.source" name="source" required />
+
+        <label>Stakeholder</label>
+        <input [(ngModel)]="requirement.stakeholder" name="stakeholder" required />
+
+        <label>Linked Subsystem(s)</label>
+        <select multiple [(ngModel)]="selectedSubsystemIds" name="linked_subsystems">
+            <option *ngFor="let s of subsystems" [value]="s.id">{{ s.name }}</option>
+        </select>
+
+        <label>Linked Test Case(s)</label>
+        <select multiple [(ngModel)]="selectedTestCaseIds" name="linked_testcases">
+            <option *ngFor="let t of testcases" [value]="t.id">{{ t.test_case_id }}</option>
+        </select>
+
+        <div class="button-container">
+            <button type="submit">Save</button>
+            <button (click)="onCancel()">Cancel</button>
+            <button (click)="deleteRequirement()">Delete</button>
+        </div>
+    </form>
+</div>

@@ -1,4 +1,4 @@
-.project-testcases {
+.project-requirements {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.add-test-case {
+.add-requirement {
     background-color: var(--primary-color);
     color: var(--background-color);
     width: fit-content;
@@ -28,16 +28,16 @@
     justify-content: center;
 }
 
-.add-test-case:hover {
+.add-requirement:hover {
     background-color: var(--primary-color-light);
 }
 
-.test-case-id {
+.requirement-id {
     font-weight: bold;
     cursor: pointer;
 }
 
-.testcases-table ::ng-deep th {
+.requirements-table ::ng-deep th {
     background-color: var(--primary-color-lightest);
     font-weight: bold;
     padding: 10px;
@@ -45,22 +45,22 @@
     border: none;
 }
 
-.testcases-table ::ng-deep th div {
+.requirements-table ::ng-deep th div {
     display: flex;
     align-items: center;
     justify-content: left;
     gap: 10px;
 }
 
-.testcases-table ::ng-deep th:hover {
+.requirements-table ::ng-deep th:hover {
     background-color: var(--primary-color-light);
 }
 
-.testcases-table ::ng-deep td {
+.requirements-table ::ng-deep td {
     padding: 10px;
     border: none;
 }
 
-.testcases-table ::ng-deep tr:hover {
+.requirements-table ::ng-deep tr:hover {
     background-color: var(--gray-light);
 }

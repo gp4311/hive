@@ -1,0 +1,41 @@
+.requirements-form-container {
+    flex: 1;
+    padding: 20px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 16px 24px;
+    align-items: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+label {
+    text-align: right;
+}
+
+.button-container {
+    grid-column: 2 / span 1;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    label {
+        text-align: left;
+        padding-bottom: 4px;
+    }
+
+    .button-container {
+        grid-column: 1 / -1;
+        flex-direction: column;
+        align-items: stretch;
+    }
+}

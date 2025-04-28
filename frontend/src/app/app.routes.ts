@@ -40,6 +40,18 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/test-case-form/test-case-form.component').then(m => m.TestCaseFormComponent)
             },
             {
+                path: 'requirements',
+                loadComponent: () => import('./components/requirements/requirements.component').then(m => m.RequirementsComponent)
+            },
+            {
+                path: 'requirements/new',
+                loadComponent: () => import('./components/requirement-form/requirement-form.component').then(m => m.RequirementFormComponent)
+            },
+            {
+                path: 'requirements/:requirementId',
+                loadComponent: () => import('./components/requirement-form/requirement-form.component').then(m => m.RequirementFormComponent)
+            },
+            {
                 path: 'users',
                 loadComponent: () => import('./components/users/users.component').then(m => m.UsersComponent)
             }
