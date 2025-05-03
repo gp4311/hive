@@ -39,10 +39,33 @@ const deleteTestCase = `
     WHERE id = $1;
 `;
 
+const getTestCaseCountByProject = `
+  SELECT COUNT(*) AS total_test_cases
+  FROM test_cases
+  WHERE project_id = $1;
+`;
+
+const getTestCaseCountByStatus = `
+  SELECT status, COUNT(*) AS count
+  FROM test_cases
+  WHERE project_id = $1
+  GROUP BY status;
+`;
+
+const getTestCasePassPercentage = `
+  SELECT 
+    ROUND(100.0 * SUM(CASE WHEN status = 'passed' THEN 1 ELSE 0 END) / COUNT(*), 2) AS percent_passed
+  FROM test_cases
+  WHERE project_id = $1;
+`;
+
 module.exports = {
   getTestCaseById,
   getTestCasesByProject,
   addTestCase,
   updateTestCase,
-  deleteTestCase
+  deleteTestCase,
+  getTestCaseCountByProject,
+  getTestCaseCountByStatus,
+  getTestCasePassPercentage
 };

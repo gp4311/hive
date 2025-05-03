@@ -61,10 +61,49 @@ const deleteTestCase = async (req, res) => {
     }
 };
 
+const getTestCaseCountByProject = async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const result = await pool.query(queries.getTestCaseCountByProject, [projectId]);
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error('Error getting test case count:', err);
+        res.status(500).json({ error: 'Failed to get test case count' });
+    }
+};
+
+const getTestCaseCountByStatus = async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const result = await pool.query(queries.getTestCaseCountByStatus, [projectId]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error getting test case count by status:', err);
+        res.status(500).json({ error: 'Failed to get test case counts by status' });
+    }
+};
+
+const getTestCasePassPercentage = async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const result = await pool.query(queries.getTestCasePassPercentage, [projectId]);
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error('Error calculating test case pass percentage:', err);
+        res.status(500).json({ error: 'Failed to calculate pass percentage' });
+    }
+};
+
 module.exports = {
     getTestCaseById,
     getTestCasesByProject,
     addTestCase,
     updateTestCase,
     deleteTestCase,
+    getTestCaseCountByProject,
+    getTestCaseCountByStatus,
+    getTestCasePassPercentage
 };

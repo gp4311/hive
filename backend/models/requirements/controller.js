@@ -121,6 +121,42 @@ const unlinkTestCase = async (req, res) => {
     }
 };
 
+const getRequirementCountByProject = async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const result = await pool.query(queries.getRequirementCountByProject, [projectId]);
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error('Error getting requirement count:', err);
+        res.status(500).json({ error: 'Failed to get requirement count' });
+    }
+};
+
+const getRequirementCountByStatus = async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const result = await pool.query(queries.getRequirementCountByStatus, [projectId]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error getting requirement count by status:', err);
+        res.status(500).json({ error: 'Failed to get requirement counts by status' });
+    }
+};
+
+const getRequirementCountByPriority = async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const result = await pool.query(queries.getRequirementCountByPriority, [projectId]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error getting requirement count by priority:', err);
+        res.status(500).json({ error: 'Failed to get requirement counts by priority' });
+    }
+};
+
 module.exports = {
     getRequirementById,
     getRequirementsByProject,
@@ -130,5 +166,8 @@ module.exports = {
     linkSubsystem,
     unlinkSubsystem,
     linkTestCase,
-    unlinkTestCase
+    unlinkTestCase,
+    getRequirementCountByProject,
+    getRequirementCountByStatus,
+    getRequirementCountByPriority
 };

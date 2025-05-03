@@ -46,4 +46,16 @@ export class RequirementsService {
     unlinkTestCase(data: LinkTestCaseRequest): Observable<any> {
         return this.http.post(`${this.apiUrl}/unlink-testcase`, data);
     }
+
+    getRequirementCount(projectId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/count/${projectId}`);
+    }
+
+    getRequirementCountByStatus(projectId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/status-count/${projectId}`);
+    }
+
+    getRequirementCountByPriority(projectId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/priority-count/${projectId}`);
+    }
 }

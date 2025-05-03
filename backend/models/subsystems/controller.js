@@ -49,9 +49,35 @@ const deleteSubsystem = async (req, res) => {
   }
 };
 
+const getSubsystemCountByProject = async (req, res) => {
+  const { projectId } = req.params;
+
+  try {
+    const result = await pool.query(queries.getSubsystemCountByProject, [projectId]);
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error('Error getting subsystem count:', err);
+    res.status(500).json({ error: 'Failed to get subsystem count' });
+  }
+};
+
+const getRequirementCountPerSubsystem = async (req, res) => {
+  const { projectId } = req.params;
+
+  try {
+    const result = await pool.query(queries.getRequirementCountPerSubsystem, [projectId]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error getting requirements per subsystem:', err);
+    res.status(500).json({ error: 'Failed to get requirement counts' });
+  }
+};
+
 module.exports = {
   getSubsystemsByProject,
   addSubsystem,
   updateSubsystem,
   deleteSubsystem,
+  getSubsystemCountByProject,
+  getRequirementCountPerSubsystem
 };

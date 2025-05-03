@@ -75,6 +75,26 @@ const getLinkedTestCases = `
     WHERE rtc.requirement_id = $1;
 `;
 
+const getRequirementCountByProject = `
+    SELECT COUNT(*) AS total_requirements
+    FROM requirements
+    WHERE project_id = $1;
+`;
+
+const getRequirementCountByStatus = `
+    SELECT status, COUNT(*) AS count
+    FROM requirements
+    WHERE project_id = $1
+    GROUP BY status;
+`;
+
+const getRequirementCountByPriority = `
+    SELECT priority, COUNT(*) AS count
+    FROM requirements
+    WHERE project_id = $1
+    GROUP BY priority;
+`;
+
 module.exports = {
     getRequirementById,
     getRequirementsByProject,
@@ -86,5 +106,8 @@ module.exports = {
     linkTestCase,
     unlinkTestCase,
     getLinkedSubsystems,
-    getLinkedTestCases
+    getLinkedTestCases,
+    getRequirementCountByProject,
+    getRequirementCountByStatus,
+    getRequirementCountByPriority
 };

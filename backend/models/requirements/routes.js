@@ -14,4 +14,8 @@ router.post('/unlink-subsystem', controller.unlinkSubsystem);
 router.post('/link-testcase', controller.linkTestCase);
 router.post('/unlink-testcase', controller.unlinkTestCase);
 
+router.get('/count/:projectId', controller.getRequirementCountByProject);
+router.get('/status-count/:projectId', controller.getRequirementCountByStatus);
+router.get('/priority-count/:projectId', controller.getRequirementCountByPriority);
+
 module.exports = router;

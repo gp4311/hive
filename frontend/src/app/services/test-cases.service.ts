@@ -30,4 +30,16 @@ export class TestCasesService {
     deleteTestCase(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/${id}`);
     }
+
+    getTestCaseCount(projectId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/count/${projectId}`);
+    }
+
+    getTestCaseCountByStatus(projectId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/status-count/${projectId}`);
+    }
+
+    getTestCasePassPercentage(projectId: number): Observable<any> {
+        return this.http.get<any>(`${this.apiUrl}/pass-percentage/${projectId}`);
+    }
 }

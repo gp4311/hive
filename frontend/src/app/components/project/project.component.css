@@ -5,7 +5,7 @@
     width: 100%;
 }
 
-.name {
+.project-name {
     color: var(--primary-dark);
     font-style: italic;
     display: flex;
@@ -13,23 +13,95 @@
     justify-content: space-between;
 }
 
-.name h3 {
+.project-name h3 {
     margin: 0;
 }
 
-.edit {
-    color: var(--primary-dark);
-}
-
-.edit i:hover {
+.p-button:hover {
     color: var(--gray-dark);
-    transition-duration: 0.5s;
-    cursor: pointer;
 }
 
-.data {
+.project-info {
     display: flex;
     gap: 20px;
     font-size: smaller;
 }
 
+.summary-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+
+.chart-cards-1 {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+}
+
+.chart-cards-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.card {
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--gray-light);
+    border-radius: 20px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    font-size: smaller;
+    color: var(--gray-dark);
+}
+
+.card-value {
+    font-size: 50px;
+    line-height: 1.5ch;
+    font-weight: bold;
+    color: var(--primary-dark);
+}
+
+.gauge-chart-card {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.gauge-chart-card .card-value {
+    font-size: medium;
+    line-height: 1;
+}
+
+.gauge-chart {
+    height: 75px;
+}
+
+.chart-container {
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 800px) { 
+    .chart-cards-1, .chart-cards-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .gauge-chart-card {
+        flex-direction: column;
+    }
+
+    .gauge-chart {
+        height: auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) { 
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+}

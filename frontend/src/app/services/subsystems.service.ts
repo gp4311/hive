@@ -26,4 +26,12 @@ export class SubsystemService {
   deleteSubsystem(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  getSubsystemCount(projectId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/count/${projectId}`);
+  }
+
+  getRequirementCountPerSubsystem(projectId: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/requirement-count/${projectId}`);
+  }
 }

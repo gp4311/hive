@@ -1,13 +1,13 @@
 <div class="project-information">
-    <div class="name">
+    <div class="project-name">
         <div>
             <h3>{{ project.name }}</h3>
         </div>
-        <div (click)="editProject(projectId)" class="edit">
+        <div (click)="editProject(projectId)" class="p-button">
             <i class="pi pi-pencil"></i>
         </div>
     </div>
-    <div class="data">
+    <div class="project-info">
         <span class="status" [ngClass]="project.status">
             <span class="dot"></span>
             {{ project.status }}
@@ -16,5 +16,75 @@
             {{ project.start_date }} &ndash; {{ project.end_date }}
         </div>
     </div>
-    <div class="description">{{ project.description }}</div>
+    <div>{{ project.description }}</div>
+    <div class="summary-cards">
+        <div class="card">
+            <div class="card-title">Number of Subsystems</div>
+            <div class="card-value">{{ subsystemCount }}</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Total Requirements</div>
+            <div class="card-value">{{ requirementCount }}</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Total Test Cases</div>
+            <div class="card-value">{{ testCaseCount }}</div>
+        </div>
+        <div class="card gauge-chart-card">
+            <div class="card-value">{{ testCasePassPercentage }}% Passed</div>
+            <div class="gauge-chart">
+                <canvas baseChart
+                    [data]="gaugeChartData"
+                    [type]="'doughnut'"
+                    [options]="gaugeChartOptions">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-cards-1">
+        <div class="card">
+            <div class="card-title">Requirement Count Per Subsystem</div>
+            <div class="chart-container">
+                <canvas baseChart
+                    [data]="subsystemRequirementChartData"
+                    [type]="'bar'"
+                    [options]="barChartOptions">
+                </canvas>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Test Cases Count by Status</div>
+            <div class="chart-container">
+                <canvas baseChart
+                    [data]="testCaseStatusChartData"
+                    [type]="'doughnut'"
+                    [options]="doughnutChartOptions">
+                </canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-cards-2">
+        <div class="card">
+            <div class="card-title">Requirement Count by Status</div>
+            <div class="chart-container">
+                <canvas baseChart
+                    [data]="requirementStatusChartData"
+                    [type]="'doughnut'"
+                    [options]="doughnutChartOptions">
+                </canvas>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-title">Requirement Count by Priority</div>
+            <div class="chart-container">
+                <canvas baseChart
+                    [data]="requirementPriorityChartData"
+                    [type]="'doughnut'"
+                    [options]="doughnutChartOptions">
+                </canvas>
+            </div>
+        </div>
+    </div>
 </div>
