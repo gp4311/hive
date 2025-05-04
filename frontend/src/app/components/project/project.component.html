@@ -30,8 +30,8 @@
             <div class="card-title">Total Test Cases</div>
             <div class="card-value">{{ testCaseCount }}</div>
         </div>
-        <div class="card gauge-chart-card">
-            <div class="card-value">{{ testCasePassPercentage }}% Passed</div>
+        <div class="card">
+            <div class="card-title">{{ testCasePassPercentage }}% Test Cases Passed</div>
             <div class="gauge-chart">
                 <canvas baseChart
                     [data]="gaugeChartData"

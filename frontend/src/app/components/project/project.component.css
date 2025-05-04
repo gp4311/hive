@@ -64,19 +64,9 @@
     color: var(--primary-dark);
 }
 
-.gauge-chart-card {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-
-.gauge-chart-card .card-value {
-    font-size: medium;
-    line-height: 1;
-}
-
 .gauge-chart {
-    height: 75px;
+    max-height: 75px;
+    width: 100%;
 }
 
 .chart-container {
@@ -86,6 +76,10 @@
 }
 
 @media (max-width: 800px) { 
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+
     .chart-cards-1, .chart-cards-2 {
         grid-template-columns: 1fr;
     }
@@ -97,11 +91,5 @@
     .gauge-chart {
         height: auto;
         width: 100%;
-    }
-}
-
-@media (max-width: 600px) { 
-    .summary-cards {
-        grid-template-columns: 1fr;
     }
 }
