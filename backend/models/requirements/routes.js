@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./controller');
 
+router.get('/:projectId/subsystems', controller.getSubsystemsForRequirements);
+router.get('/:projectId/test-cases', controller.getTestCasesForRequirements);
+
 router.get('/project/:projectId', controller.getRequirementsByProject);
 router.get('/:id', controller.getRequirementById);
 router.post('/add', controller.addRequirement);

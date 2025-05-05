@@ -58,4 +58,12 @@ export class RequirementsService {
     getRequirementCountByPriority(projectId: number): Observable<any> {
         return this.http.get<any>(`${this.apiUrl}/priority-count/${projectId}`);
     }
+
+    getSubsystemsForRequirements(projectId: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/${projectId}/subsystems`);
+    }
+
+    getTestCasesForRequirements(projectId: number): Observable<any[]> {
+        return this.http.get<any[]>(`${this.apiUrl}/${projectId}/test-cases`);
+    }
 }

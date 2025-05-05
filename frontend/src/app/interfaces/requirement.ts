@@ -35,3 +35,25 @@ export interface LinkTestCaseRequest {
     requirementId: number;
     testCaseId: number;
 }
+
+export interface RequirementSubsystemMapping {
+    requirement_id: number;
+    subsystem_name: string;
+}
+
+export interface RequirementTestCaseMapping {
+    requirement_id: number;
+    test_case_id: string;
+    test_case_status: 'planned' | 'in_progress' | 'passed' | 'failed';
+}
+
+export interface TraceabilityRow {
+    requirement_id: string;
+    title: string;
+    priority: string;
+    status: string;
+    verification_method: string;
+    subsystems: string;
+    test_case_ids: string;
+    test_case_statuses: string;
+}

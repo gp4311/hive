@@ -52,6 +52,10 @@ export const routes: Routes = [
                 loadComponent: () => import('./components/requirement-form/requirement-form.component').then(m => m.RequirementFormComponent)
             },
             {
+                path: 'traceability-matrix',
+                loadComponent: () => import('./components/traceability-matrix/traceability-matrix.component').then(m => m.TraceabilityMatrixComponent)
+            },
+            {
                 path: 'users',
                 loadComponent: () => import('./components/users/users.component').then(m => m.UsersComponent)
             }

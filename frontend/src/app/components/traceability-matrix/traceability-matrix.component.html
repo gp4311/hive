@@ -1,0 +1,100 @@
+<div class="primeng-filter-scope">
+    <p-table #dt [value]="traceabilityMatrix" [filterDelay]="200" sortField="requirement_id" responsiveLayout="scroll" class="rtm">
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="requirement_id">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <div>Requirement ID</div>
+                            <p-sortIcon field="requirement_id"></p-sortIcon>
+                        </div>
+                        <p-columnFilter type="text" field="requirement_id"></p-columnFilter>
+                    </div>
+
+                </th>
+                <th>
+                    <div class="column-header">
+                        <div>Title</div>
+                        <p-columnFilter type="text" field="title"></p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="priority">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <div>Priority</div>
+                            <p-sortIcon field="priority"></p-sortIcon>
+                        </div>
+                        <p-columnFilter field="priority" matchMode="equals" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-filter="filterCallback">
+                                <p-dropdown [(ngModel)]="priorityFilterValue" [options]="priorityOptions" placeholder="Select"
+                                    (onChange)="filter($event.value)">
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="status">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <div>Status</div>
+                            <p-sortIcon field="status"></p-sortIcon>
+                        </div>
+                        <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-filter="filterCallback">
+                                <p-dropdown [(ngModel)]="statusFilterValue" [options]="statusOptions" placeholder="Select"
+                                    (onChange)="filter($event.value)">
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th pSortableColumn="verification_method">
+                    <div class="column-header">
+                        <div class="column-title">
+                            <div>Verification</div>
+                            <p-sortIcon field="verification_method"></p-sortIcon>
+                        </div>
+                        <p-columnFilter field="verification_method" matchMode="equals" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-filter="filterCallback">
+                                <p-dropdown [(ngModel)]="verificationFilterValue" [options]="verificationOptions" placeholder="Select"
+                                    (onChange)="filter($event.value)">
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        <div>Subsystems</div>
+                        <p-columnFilter type="text" field="subsystems"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        <div>Test Cases</div>
+                        <p-columnFilter type="text" field="test_case_ids"></p-columnFilter>
+                    </div>
+                </th>
+                <th>
+                    <div class="column-header">
+                        <div>Test Status</div>
+                        <p-columnFilter type="text" field="test_case_statuses"></p-columnFilter>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-row>
+            <tr>
+                <td>{{ row.requirement_id }}</td>
+                <td>{{ row.title }}</td>
+                <td>{{ row.priority }}</td>
+                <td>{{ row.status }}</td>
+                <td>{{ row.verification_method }}</td>
+                <td>{{ row.subsystems }}</td>
+                <td>{{ row.test_case_ids }}</td>
+                <td>{{ row.test_case_statuses }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

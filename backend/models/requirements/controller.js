@@ -157,6 +157,28 @@ const getRequirementCountByPriority = async (req, res) => {
     }
 };
 
+const getSubsystemsForRequirements = async (req, res) => {
+    const { projectId } = req.params;
+    try {
+        const result = await pool.query(queries.getSubsystemsForRequirements, [projectId]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error fetching requirement-subsystem mappings:', err);
+        res.status(500).json({ error: 'Failed to get subsystem mappings' });
+    }
+};
+
+const getTestCasesForRequirements = async (req, res) => {
+    const { projectId } = req.params;
+    try {
+        const result = await pool.query(queries.getTestCasesForRequirements, [projectId]);
+        res.json(result.rows);
+    } catch (err) {
+        console.error('Error fetching requirement-testcase mappings:', err);
+        res.status(500).json({ error: 'Failed to get test case mappings' });
+    }
+};
+
 module.exports = {
     getRequirementById,
     getRequirementsByProject,
@@ -169,5 +191,7 @@ module.exports = {
     unlinkTestCase,
     getRequirementCountByProject,
     getRequirementCountByStatus,
-    getRequirementCountByPriority
+    getRequirementCountByPriority,
+    getSubsystemsForRequirements,
+    getTestCasesForRequirements
 };

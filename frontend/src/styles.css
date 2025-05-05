@@ -27,6 +27,24 @@
   --status-failed-color: #d93025;
   --font-text: 'IBM Plex Sans', sans-serif;
   --font-heading: 'Calistoga', serif;
+
+  --p-datatable-filter-overlay-select-background: var(--background-color);
+  --p-datatable-filter-overlay-select-color: var(--primary-dark);
+  --p-datatable-filter-overlay-select-border-color: var(--background-color);
+  --p-datatable-filter-overlay-select-border-radius: 10px;
+  --p-datatable-filter-overlay-select-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  --p-datatable-filter-constraint-padding: 2px 10px;
+  --p-datatable-filter-constraint-selected-background: var(--gray-light);
+
+  --p-select-overlay-background: var(--background-color);
+  --p-select-overlay-color: var(--primary-dark);
+  --p-select-overlay-border-color: var(--background-color);
+  --p-select-overlay-border-radius: 10px;
+  --p-select-overlay-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  --p-select-option-padding: 2px 10px;
+  --p-select-option-selected-focus-background: var(--gray-light);
 }
 
 * {
@@ -169,4 +187,36 @@ quill-editor {
 .ql-editor {
   padding: 10px;
   line-height: 1.6;
+}
+
+.primeng-filter-scope {
+  --text-color: var(--primary-dark);
+  --surface-overlay: var(--background-color);
+  --border-color: var(--gray-medium);
+  --hover-bg: var(--gray-medium);
+  --primary-color: var(--primary-color);
+
+  .p-inputtext,
+  .p-dropdown,
+  .p-multiselect-label {
+    background: white;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: smaller;
+  }
+
+  .p-button {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .p-select-dropdown {
+    display: none;
+  }
 }

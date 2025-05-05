@@ -95,6 +95,25 @@ const getRequirementCountByPriority = `
     GROUP BY priority;
 `;
 
+const getSubsystemsForRequirements = `
+    SELECT
+        rs.requirement_id,
+        s.name AS subsystem_name
+    FROM requirement_subsystems rs
+    JOIN subsystems s ON s.id = rs.subsystem_id
+    WHERE s.project_id = $1;
+`;
+
+const getTestCasesForRequirements = `
+    SELECT
+        rtc.requirement_id,
+        tc.test_case_id,
+        tc.status AS test_case_status
+    FROM requirement_test_cases rtc
+    JOIN test_cases tc ON tc.id = rtc.test_case_id
+    WHERE tc.project_id = $1;
+`;
+
 module.exports = {
     getRequirementById,
     getRequirementsByProject,
@@ -109,5 +128,7 @@ module.exports = {
     getLinkedTestCases,
     getRequirementCountByProject,
     getRequirementCountByStatus,
-    getRequirementCountByPriority
+    getRequirementCountByPriority,
+    getSubsystemsForRequirements,
+    getTestCasesForRequirements
 };

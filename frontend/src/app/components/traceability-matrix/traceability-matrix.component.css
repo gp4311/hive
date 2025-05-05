@@ -1,0 +1,34 @@
+.rtm ::ng-deep th {
+    padding: 10px;
+    font-weight: bold;
+    background-color: var(--gray-light);
+}
+
+.rtm ::ng-deep tr:hover {
+    background-color: var(--gray-light);
+}
+
+.rtm ::ng-deep td {
+    padding: 10px;
+}
+
+.column-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.column-title {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.rtm-tools {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    vertical-align: middle;
+    padding-bottom: 10px;
+}
