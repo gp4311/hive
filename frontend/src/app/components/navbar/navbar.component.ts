@@ -16,7 +16,7 @@ export class NavbarComponent {
     this.router.navigate(['/login']);
   }
 
-  goToDashboard() {
-    this.router.navigate(['/dashboard']);
+  goToProjects() {
+    this.router.navigate(['/projects']);
   }
 }
