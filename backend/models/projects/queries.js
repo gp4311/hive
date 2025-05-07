@@ -12,6 +12,13 @@ const getProjectById = `
   SELECT * FROM projects WHERE id = $1;
 `;
 
+const getProjectsForUser = `
+  SELECT p.*
+  FROM projects p
+  JOIN project_users pu ON pu.project_id = p.id
+  WHERE pu.user_id = $1;
+`;
+
 const updateProject = `
   UPDATE projects
   SET name = $1,
@@ -31,6 +38,7 @@ module.exports = {
   createProject,
   getAllProjects,
   getProjectById,
+  getProjectsForUser,
   updateProject,
   deleteProject,
 };

@@ -4,6 +4,12 @@ export interface User {
     email: string;
 }
 
-export interface ProjectUser extends User {
+export interface UserWithRole extends User {
+    role: 'admin' | 'manager' | 'engineer' | 'reviewer' | 'viewer';
+}
+
+export interface ProjectUserRole {
+    project_id: number;
+    project_name: string;
     role: 'admin' | 'manager' | 'engineer' | 'reviewer' | 'viewer';
 }

@@ -40,6 +40,18 @@ const getProjectById = async (req, res) => {
   }
 };
 
+const getProjectsForUser = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const result = await pool.query(queries.getProjectsForUser, [userId]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error fetching user projects' });
+  }
+};
+
 const updateProject = async (req, res) => {
   const { id } = req.params;
   const { name, description, status, start_date, end_date } = req.body;
@@ -74,6 +86,7 @@ module.exports = {
   createProject,
   getAllProjects,
   getProjectById,
+  getProjectsForUser,
   updateProject,
   deleteProject,
 };

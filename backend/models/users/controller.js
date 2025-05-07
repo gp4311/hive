@@ -29,10 +29,39 @@ const loginUser = async (req, res) => {
       expiresIn: '1d',
     });
 
-    res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
+    // Fetch project roles
+    const roleResult = await pool.query(queries.getUserProjectRoles, [user.id]);
+    const roles = roleResult.rows; // Array of { project_id, project_name, role }
+
+    res.json({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        roles
+      }
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Server error' });
+  }
+};
+
+const getCurrentUser = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const userResult = await pool.query(queries.getUserById, [userId]);
+    const rolesResult = await pool.query(queries.getUserProjectRoles, [userId]);
+
+    res.json({
+      user: userResult.rows[0],
+      roles: rolesResult.rows
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch user profile' });
   }
 };
 
@@ -53,6 +82,7 @@ const getAllUsers = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
+  getCurrentUser,
   logoutUser,
   getAllUsers
 };

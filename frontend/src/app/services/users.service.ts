@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProjectUser } from '../interfaces/user';
+import { UserWithRole } from '../interfaces/user';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectUserService {
@@ -9,8 +9,8 @@ export class ProjectUserService {
 
   constructor(private http: HttpClient) {}
 
-  getUsersForProject(projectId: number): Observable<ProjectUser[]> {
-    return this.http.get<ProjectUser[]>(`${this.apiUrl}/${projectId}`);
+  getUsersForProject(projectId: number): Observable<UserWithRole[]> {
+    return this.http.get<UserWithRole[]>(`${this.apiUrl}/${projectId}`);
   }
 
   addUserToProject(user_id: number, project_id: number, role: string): Observable<any> {

@@ -5,7 +5,7 @@ import { TableModule } from 'primeng/table';
 import { AuthService } from '../../services/auth.service';
 import { ProjectUserService } from '../../services/users.service';
 import { ProjectContextService } from '../../services/project-context.service';
-import { User, ProjectUser } from '../../interfaces/user';
+import { User, UserWithRole } from '../../interfaces/user';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +16,7 @@ import { User, ProjectUser } from '../../interfaces/user';
 })
 export class UsersComponent {
   projectId: any | null = null;
-  projectUsers: ProjectUser[] = [];
+  projectUsers: UserWithRole[] = [];
   allUsers: User[] = [];
   availableUsers: User[] = [];
   selectedUserId: any | null = null;
@@ -84,7 +84,7 @@ export class UsersComponent {
     });
   }
 
-  updateUserRole(user: ProjectUser) {
+  updateUserRole(user: UserWithRole) {
     this.userSvc.updateUserRole(this.projectId!, user.id, user.role).subscribe({
       next: () => {}
     });

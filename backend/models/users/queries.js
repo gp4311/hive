@@ -8,12 +8,28 @@ const findUserByEmail = `
   SELECT * FROM users WHERE email = $1;
 `;
 
+const getUserById = `
+  SELECT id, name, email FROM users WHERE id = $1;
+`;
+
 const getAllUsers = `
   SELECT id, name, email FROM users ORDER BY name;
+`;
+
+const getUserProjectRoles = `
+  SELECT 
+    p.id AS project_id, 
+    p.name AS project_name, 
+    pu.role 
+  FROM project_users pu
+  JOIN projects p ON pu.project_id = p.id
+  WHERE pu.user_id = $1;
 `;
 
 module.exports = {
   createUser,
   findUserByEmail,
+  getUserById,
   getAllUsers,
+  getUserProjectRoles
 };

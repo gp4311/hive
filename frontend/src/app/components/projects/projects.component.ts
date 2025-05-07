@@ -22,7 +22,7 @@ export class ProjectsComponent {
   }
 
   getProjects() {
-    this.projectSvc.getProjects().subscribe({
+    this.projectSvc.getMyProjects().subscribe({
       next: (data) => {
         this.projects = data.sort((a, b) => {
           // Move archived to the bottom, then sort by start_date descending
