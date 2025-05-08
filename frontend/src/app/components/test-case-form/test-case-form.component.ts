@@ -5,6 +5,7 @@ import { QuillModule } from 'ngx-quill';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectContextService } from '../../services/project-context.service';
 import { TestCasesService } from '../../services/test-cases.service';
+import { PermissionService } from '../../services/permission.service';
 import { TestCase } from '../../interfaces/test-case';
 import { FileService } from '../../services/files.service';
 
@@ -45,12 +46,17 @@ export class TestCaseFormComponent implements OnInit {
     ]
   };
 
+  editorModulesReadOnly = {
+    toolbar: false
+  };
+
   constructor(
     private testcasesSvc: TestCasesService,
     private projectCtx: ProjectContextService,
     private route: ActivatedRoute,
     private router: Router,
     private fileSvc: FileService,
+    public permission: PermissionService
   ) { }
 
   ngOnInit(): void {

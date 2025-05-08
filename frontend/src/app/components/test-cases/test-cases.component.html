@@ -4,7 +4,7 @@
         <div class="global-filter-container">
             <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search" />
         </div> 
-        <button class="add-test-case" title="Add test case">
+        <button class="add-test-case" title="Add test case" *ngIf="!permission.isViewer(projectId)">
             <i class="pi pi-plus" (click)="addTestCase()"></i>
         </button>
     </div>

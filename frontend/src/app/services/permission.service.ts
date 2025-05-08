@@ -18,8 +18,8 @@ export class PermissionService {
         return this.getRole(projectId) === 'viewer';
     }
 
-    isAdmin(): boolean {
-        const roles = this.auth.getAllRoles();
-        return Object.values(roles).includes('admin');
+    isAdmin(projectId: number): boolean {
+        const role = this.auth.getRoleForProject(projectId);
+        return role === 'admin';
     }
 }

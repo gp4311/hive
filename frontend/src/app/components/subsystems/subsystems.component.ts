@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { ProjectContextService } from '../../services/project-context.service';
 import { SubsystemService } from '../../services/subsystems.service';
+import { PermissionService } from '../../services/permission.service';
 import { Subsystem } from '../../interfaces/subsystem';
 
 @Component({
@@ -23,7 +24,8 @@ export class SubsystemsComponent {
 
   constructor(
     private projectCtx: ProjectContextService,
-    private subsystemSvc: SubsystemService
+    private subsystemSvc: SubsystemService,
+    public permission: PermissionService
   ) { }
 
   ngOnInit(): void {

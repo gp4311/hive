@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { AuthService } from '../../services/auth.service';
+import { PermissionService } from '../../services/permission.service';
 import { ProjectUserService } from '../../services/users.service';
 import { ProjectContextService } from '../../services/project-context.service';
 import { User, UserWithRole } from '../../interfaces/user';
@@ -21,9 +22,11 @@ export class UsersComponent {
   availableUsers: User[] = [];
   selectedUserId: any | null = null;
   selectedUserRole: any | null = null;
+  permission: string | null = null;
 
   constructor(
     private authSvc: AuthService,
+    public permissionSvc: PermissionService,
     private userSvc: ProjectUserService,
     private projectCtx: ProjectContextService
   ) {}
@@ -34,6 +37,8 @@ export class UsersComponent {
       this.projectId = id;
       this.loadProjectUsers(id);
       this.loadAllUsers();
+      
+      this.permission = this.permissionSvc.getRole(id);
     }
   }
 

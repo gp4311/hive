@@ -1,33 +1,36 @@
 <div class="requirements-form-container">
     <form (submit)="onSubmit(); $event.preventDefault()">
         <label>Requirement ID</label>
-        <input [(ngModel)]="requirement.requirement_id" name="name" required />
+        <input [(ngModel)]="requirement.requirement_id" name="name" required [readonly]="permission.isViewer(projectId)" />
 
         <label>Title</label>
-        <input [(ngModel)]="requirement.title" name="title" required />
+        <input [(ngModel)]="requirement.title" name="title" required [readonly]="permission.isViewer(projectId)" />
 
         <label>Description</label>
-        <quill-editor [(ngModel)]="requirement.description"
-                    [modules]="editorModules"
-                    name="description"
-                    placeholder="">
+        <quill-editor
+            [(ngModel)]="requirement.description"
+            [modules]="permission.isViewer(projectId) ? editorModulesReadOnly : editorModules"
+            [readOnly]="permission.isViewer(projectId)"
+            class="quill-editor"
+            [ngClass]="{ 'quill-readonly': permission.isViewer(projectId) }"
+            name="description">
         </quill-editor>
 
         <label>Type</label>
-        <select [(ngModel)]="requirement.type" name="type">
+        <select [(ngModel)]="requirement.type" name="type" [disabled]="permission.isViewer(projectId)">
             <option value="functional">Functional</option>
             <option value="non-functional">Non-functional</option>
         </select>
 
         <label>Priority</label>
-        <select [(ngModel)]="requirement.priority" name="priority">
+        <select [(ngModel)]="requirement.priority" name="priority" [disabled]="permission.isViewer(projectId)">
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="high">High</option>
         </select>
 
         <label>Status</label>
-        <select [(ngModel)]="requirement.status" name="status">
+        <select [(ngModel)]="requirement.status" name="status" [disabled]="permission.isViewer(projectId)">
             <option value="draft">Draft</option>
             <option value="reviewed">Reviewed</option>
             <option value="approved">Approved</option>
@@ -35,7 +38,7 @@
         </select>
 
         <label>Verification Method</label>
-        <select [(ngModel)]="requirement.verification_method" name="verification_method">
+        <select [(ngModel)]="requirement.verification_method" name="verification_method" [disabled]="permission.isViewer(projectId)">
             <option value="test">Test</option>
             <option value="inspection">Inspection</option>
             <option value="analysis">Analysis</option>
@@ -43,22 +46,22 @@
         </select>
 
         <label>Source</label>
-        <input [(ngModel)]="requirement.source" name="source" required />
+        <input [(ngModel)]="requirement.source" name="source" required [disabled]="permission.isViewer(projectId)" />
 
         <label>Stakeholder</label>
-        <input [(ngModel)]="requirement.stakeholder" name="stakeholder" required />
+        <input [(ngModel)]="requirement.stakeholder" name="stakeholder" required [disabled]="permission.isViewer(projectId)" />
 
         <label>Linked Subsystem(s)</label>
-        <select multiple [(ngModel)]="selectedSubsystemIds" name="linked_subsystems">
+        <select multiple [(ngModel)]="selectedSubsystemIds" name="linked_subsystems" [disabled]="permission.isViewer(projectId)">
             <option *ngFor="let s of subsystems" [value]="s.id">{{ s.name }}</option>
         </select>
 
         <label>Linked Test Case(s)</label>
-        <select multiple [(ngModel)]="selectedTestCaseIds" name="linked_testcases">
+        <select multiple [(ngModel)]="selectedTestCaseIds" name="linked_testcases" [disabled]="permission.isViewer(projectId)">
             <option *ngFor="let t of testcases" [value]="t.id">{{ t.test_case_id }}</option>
         </select>
 
-        <div class="button-container">
+        <div class="button-container" *ngIf="!permission.isViewer(projectId)">
             <button type="submit">Save</button>
             <button (click)="onCancel()">Cancel</button>
             <button (click)="deleteRequirement()">Delete</button>

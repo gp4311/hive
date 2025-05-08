@@ -7,16 +7,17 @@
                 <td class="name">{{ user.name }}</td>
                 <td class="email">{{ user.email }}</td>
                 <td>
-                    <select [(ngModel)]="user.role" (change)="updateUserRole(user)">
+                    <select *ngIf="permission === 'admin'" [(ngModel)]="user.role" (change)="updateUserRole(user)">
                         <option value="admin">Admin</option>
                         <option value="manager">Manager</option>
                         <option value="engineer">Engineer</option>
                         <option value="reviewer">Reviewer</option>
                         <option value="viewer">Viewer</option>
                     </select>
+                    <div *ngIf="permission !== 'admin'">{{ user.role }}</div>
                 </td>
                 <td>
-                    <div (click)="removeUser(user.id)" class="p-button">
+                    <div *ngIf="permission === 'admin'" (click)="removeUser(user.id)" class="p-button">
                         <i class="pi pi-trash"></i>
                     </div>
                 </td>
@@ -24,7 +25,7 @@
         </ng-template>
     </p-table>
 
-    <div class="add-user-row">
+    <div *ngIf="permission === 'admin'" class="add-user-row">
         <select [(ngModel)]="selectedUserId">
             <option [ngValue]="null" disabled>Select a user</option>
             <option *ngFor="let user of availableUsers" [ngValue]="user.id">

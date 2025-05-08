@@ -3,6 +3,7 @@ import { TableModule } from 'primeng/table';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProjectService } from '../../services/project.service';
+import { PermissionService } from '../../services/permission.service';
 
 @Component({
   selector: 'app-projects',
@@ -15,7 +16,11 @@ export class ProjectsComponent {
   projects: any [] = [];
   error = '';
 
-  constructor(private projectSvc: ProjectService, private router: Router) {}
+  constructor(
+    private projectSvc: ProjectService, 
+    private router: Router,
+    public permission: PermissionService
+  ) {}
 
   ngOnInit() {
     this.getProjects();

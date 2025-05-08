@@ -184,6 +184,10 @@ quill-editor {
   font-family: var(--font-text);
 }
 
+.quill-readonly .ql-container.ql-snow {
+  border-radius: 10px;
+}
+
 .ql-editor {
   padding: 10px;
   line-height: 1.6;

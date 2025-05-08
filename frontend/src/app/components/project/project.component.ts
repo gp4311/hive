@@ -9,6 +9,7 @@ import { Project, SubsystemRequirementCount, RequirementStatusCount, Requirement
 import { SubsystemService } from '../../services/subsystems.service';
 import { RequirementsService } from '../../services/requirements.service';
 import { TestCasesService } from '../../services/test-cases.service';
+import { PermissionService } from '../../services/permission.service';
 
 @Component({
   selector: 'app-project',
@@ -169,7 +170,8 @@ export class ProjectComponent {
     private projectCtx: ProjectContextService,
     private subsystemSvc: SubsystemService,
     private requirementsSvc: RequirementsService,
-    private testcasesSvc: TestCasesService
+    private testcasesSvc: TestCasesService,
+    public permission: PermissionService
   ) {}
 
   ngOnInit(): void {

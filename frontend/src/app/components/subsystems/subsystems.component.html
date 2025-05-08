@@ -18,7 +18,7 @@
                     </ng-container>
                     <ng-template #descView>{{ subsystem.description }}</ng-template>
                 </td>
-                <td>
+                <td *ngIf="!permission.isViewer(projectId)">
                     <ng-container *ngIf="editingSubsystemId === subsystem.id; else actionsView">
                         <div class="actions">
                             <div (click)="updateSubsystem()" class="p-button">
@@ -44,7 +44,7 @@
         </ng-template>
     </p-table>
 
-    <div class="add-subsystem-row">
+    <div *ngIf="!permission.isViewer(projectId)" class="add-subsystem-row">
         <input [(ngModel)]="newSubsystemName" name="name" placeholder="Name" required />
         <input [(ngModel)]="newSubsystemDescription" name="description" placeholder="Description" required />
 

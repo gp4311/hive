@@ -3,7 +3,7 @@
         <div>
             <h3>{{ project.name }}</h3>
         </div>
-        <div (click)="editProject(projectId)" class="p-button">
+        <div (click)="editProject(projectId)" class="p-button" *ngIf="!permission.isViewer(projectId)">
             <i class="pi pi-pencil"></i>
         </div>
     </div>

@@ -4,6 +4,7 @@ import { TableModule } from 'primeng/table';
 import { Router } from '@angular/router';
 import { ProjectContextService } from '../../services/project-context.service';
 import { TestCasesService } from '../../services/test-cases.service';
+import { PermissionService } from '../../services/permission.service';
 import { TestCase } from '../../interfaces/test-case';
 
 @Component({
@@ -20,7 +21,8 @@ export class TestCasesComponent {
   constructor(
     private projectCtx: ProjectContextService,
     private testcasesSvc: TestCasesService,
-    private router: Router
+    private router: Router,
+    public permission: PermissionService
   ){ }
 
   ngOnInit(): void {

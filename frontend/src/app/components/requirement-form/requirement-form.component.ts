@@ -7,6 +7,7 @@ import { ProjectContextService } from '../../services/project-context.service';
 import { RequirementsService } from '../../services/requirements.service';
 import { SubsystemService } from '../../services/subsystems.service';
 import { TestCasesService } from '../../services/test-cases.service';
+import { PermissionService } from '../../services/permission.service';
 import { Requirement, LinkSubsystemRequest, LinkTestCaseRequest } from '../../interfaces/requirement';
 
 @Component({
@@ -50,13 +51,18 @@ export class RequirementFormComponent implements OnInit {
     ]
   };
 
+  editorModulesReadOnly = {
+    toolbar: false
+  };
+
   constructor(
     private requirementsSvc: RequirementsService,
     private subsystemSvc: SubsystemService,
     private testcasesSvc: TestCasesService,
     private projectCtx: ProjectContextService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    public permission: PermissionService
   ) { }
 
   ngOnInit(): void {

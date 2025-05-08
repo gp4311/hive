@@ -20,10 +20,10 @@
                 <td class="description">{{ project.description }}</td>
                 <td class="actions">
                     <div>
-                        <div (click)="editProject(project.id)" class="p-button">
+                        <div *ngIf="!permission.isViewer(project.id)" (click)="editProject(project.id)" class="p-button">
                             <i class="pi pi-pencil"></i>
-                        </div>
-                        <div (click)="deleteProject(project.id)" class="p-button">
+                        </div>                          
+                        <div *ngIf="permission.getRole(project.id) === 'admin'" (click)="deleteProject(project.id)" class="p-button">
                             <i class="pi pi-trash"></i>
                         </div>
                     </div>

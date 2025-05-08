@@ -1,48 +1,63 @@
 <div class="testcase-form-container">
     <form (submit)="onSubmit(); $event.preventDefault()">
         <label>Test Case ID</label>
-        <input [(ngModel)]="testcase.test_case_id" name="name" required />
+        <input [(ngModel)]="testcase.test_case_id" name="name" required [readonly]="permission.isViewer(projectId)" />
 
         <label>Description</label>
-        <input [(ngModel)]="testcase.description" name="description" required />
+        <input [(ngModel)]="testcase.description" name="description" required [readonly]="permission.isViewer(projectId)"/>
 
         <label>Test Steps</label>
         <quill-editor [(ngModel)]="testcase.test_steps"
-                    [modules]="editorModules"
+                    [modules]="permission.isViewer(projectId) ? editorModulesReadOnly : editorModules"
+                    [readOnly]="permission.isViewer(projectId)"
+                    class="quill-editor"
+                    [ngClass]="{ 'quill-readonly': permission.isViewer(projectId) }"
                     name="test_steps"
                     placeholder="">
         </quill-editor>
 
         <label>Prerequisites</label>
         <quill-editor [(ngModel)]="testcase.prerequisites"
-                    [modules]="editorModules"
+                    [modules]="permission.isViewer(projectId) ? editorModulesReadOnly : editorModules"
+                    [readOnly]="permission.isViewer(projectId)"
+                    class="quill-editor"
+                    [ngClass]="{ 'quill-readonly': permission.isViewer(projectId) }"
                     name="prerequisites"
                     placeholder="">
         </quill-editor>
 
         <label>Test Data</label>
         <quill-editor [(ngModel)]="testcase.test_data"
-                    [modules]="editorModules"
+                    [modules]="permission.isViewer(projectId) ? editorModulesReadOnly : editorModules"
+                    [readOnly]="permission.isViewer(projectId)"
+                    class="quill-editor"
+                    [ngClass]="{ 'quill-readonly': permission.isViewer(projectId) }"
                     name="test_data"
                     placeholder="">
         </quill-editor>
 
         <label>Expected Results</label>
         <quill-editor [(ngModel)]="testcase.expected_result"
-                    [modules]="editorModules"
+                    [modules]="permission.isViewer(projectId) ? editorModulesReadOnly : editorModules"
+                    [readOnly]="permission.isViewer(projectId)"
+                    class="quill-editor"
+                    [ngClass]="{ 'quill-readonly': permission.isViewer(projectId) }"
                     name="expected_result"
                     placeholder="">
         </quill-editor>
 
         <label>Actual Results</label>
         <quill-editor [(ngModel)]="testcase.actual_result"
-                    [modules]="editorModules"
+                    [modules]="permission.isViewer(projectId) ? editorModulesReadOnly : editorModules"
+                    [readOnly]="permission.isViewer(projectId)"
+                    class="quill-editor"
+                    [ngClass]="{ 'quill-readonly': permission.isViewer(projectId) }"
                     name="actual_result"
                     placeholder="">
         </quill-editor>
 
         <label>Status</label>
-        <select [(ngModel)]="testcase.status" name="status">
+        <select [(ngModel)]="testcase.status" name="status" [disabled]="permission.isViewer(projectId)">
             <option value="planned">Planned</option>
             <option value="in_progress">In Progress</option>
             <option value="passed">Passed</option>
@@ -55,16 +70,17 @@
                 type="file"
                 (change)="onFileSelected($event)"
                 [disabled]="testcase.evidence_link && !pendingFileRemoval"
+                *ngIf="!permission.isViewer(projectId)"
             />
             <div *ngIf="testcase.evidence_link && !pendingFileRemoval">
                 <a [href]="'http://localhost:5000' + testcase.evidence_link" target="_blank">View Uploaded File</a>
-                <div (click)="removeEvidence()" class="p-button">
+                <div (click)="removeEvidence()" class="p-button" *ngIf="!permission.isViewer(projectId)">
                     <i class="pi pi-trash"></i>
                 </div>
             </div>
         </div>
 
-        <div class="button-container">
+        <div class="button-container" *ngIf="!permission.isViewer(projectId)">
             <button type="submit">Save</button>
             <button (click)="onCancel()">Cancel</button>
             <button (click)="deleteTestCase()">Delete</button>
