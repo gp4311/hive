@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import {
   CanActivate,
   Router,
@@ -13,24 +14,35 @@ import { AuthService } from './services/auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (!this.auth.isLoggedIn()) {
-      this.router.navigate(['/login']);
-      return false;
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.auth.restoreSession().pipe(
+      map(() => {
+        if (!this.auth.isLoggedIn()) {
+          this.router.navigate(['/login']);
+          return false;
+        }
+  
+        const projectId = this.getProjectIdFromRoute(route);
+        if (projectId !== null) {
+          const role = this.auth.getRoleForProject(projectId);
+          if (!role) {
+            this.router.navigate(['/projects']);
+            return false;
+          }
+        }
+  
+        return true;
+      })
+    );
+  }  
+
+  private getProjectIdFromRoute(route: ActivatedRouteSnapshot): number | null {
+    let current: ActivatedRouteSnapshot | null = route;
+    while (current) {
+      const id = current.params['id'];
+      if (id && !isNaN(+id)) return +id;
+      current = current.parent;
     }
-  
-    // Extract projectId from route params
-    const projectId = +route.params['id'] || +route.parent?.params['id'];
-  
-    // If projectId exists, check user's role for the project
-    if (projectId) {
-      const role = this.auth.getRoleForProject(projectId);
-      if (!role) {
-        this.router.navigate(['/projects']);
-        return false;
-      }
-    }
-  
-    return true;
+    return null;
   }  
 }

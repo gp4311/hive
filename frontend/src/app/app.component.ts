@@ -14,10 +14,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 export class AppComponent {
   constructor(private auth: AuthService) {}
 
-  ngOnInit() {
-    this.auth.restoreSession().subscribe();
-  }
-
   isLoggedIn() {
     return this.auth.isLoggedIn();
   }
